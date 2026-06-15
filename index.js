@@ -12,6 +12,7 @@ const operate = (num1, operand, num2) => {
 };
 
 // create a calculator
+const container = document.querySelectorAll(".container");
 
 function randomColors() {
   let colorVal = Math.round(Math.random() * 255);
@@ -26,31 +27,45 @@ const returnDiv = () => {
   return divElement;
 };
 
-let divElement;
-const createElementDiv = () => {
-  divElement = returnDiv();
-  const container = document.querySelector(".container");
-  container.classList.add("display-flex");
-  container.appendChild(divElement);
-  divElement.classList.add("element");
-  divElement.style.backgroundColor = randomColors();
-};
+let divElement = returnDiv();
+//const createElementDiv = () => {};
+console.log(container);
 
-createElementDiv();
+const labels = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "+",
+  "-",
+  "*",
+  "/",
+  "=",
+];
 
+let containerArray = [];
+let containerDivs;
 const createNumberBlock = () => {
-  for (let i = 0; i < 14; i++) {
-    createElementDiv();
-    if (i <= 9) divElement.textContent = i;
-    if (i == 10) divElement.textContent = "+";
-    if (i == 11) divElement.textContent = "-";
-    if (i == 12) divElement.textContent = "*";
-    if (i == 13) divElement.textContent = "/";
+  for (let i = 0; i < labels.length; i++) {
+    divElement = returnDiv();
+    const container = document.querySelector(".container");
+    container.classList.add("display-flex");
+    container.append(divElement);
+    divElement.classList.add("element");
+    divElement.style.backgroundColor = randomColors();
+    divElement.textContent = labels[i];
+    divElement.classList.add("numbers");
   }
+  containerDivs = document.querySelectorAll(".container div ");
 };
 
 createNumberBlock();
-const container = document.querySelectorAll(".container");
 
 let arrayOfNumbers = [];
 let result = 0;
@@ -58,20 +73,21 @@ const clickDiv = () => {
   container.forEach((element) => {
     element.addEventListener("click", function (e) {
       let numberClicked = Number(e.target.textContent);
+      console.log(e.target.textContent);
       arrayOfNumbers.push(numberClicked);
 
       if (e.target.textContent == "+") {
         result = Number(arrayOfNumbers[0]) + Number(arrayOfNumbers[1]);
-        console.log(result);
+        containerDivs[14].textContent = result;
       } else if (e.target.textContent == "-") {
         result = Number(arrayOfNumbers[0]) - Number(arrayOfNumbers[1]);
-        console.log(result);
+        containerDivs[14].textContent = result;
       } else if (e.target.textContent == "*") {
         result = Number(arrayOfNumbers[0]) * Number(arrayOfNumbers[1]);
-        console.log(result);
+        containerDivs[14].textContent = result;
       } else if (e.target.textContent == "/") {
         result = Number(arrayOfNumbers[0]) / Number(arrayOfNumbers[1]);
-        console.log(result);
+        containerDivs[14].textContent = result;
       }
     });
   });
