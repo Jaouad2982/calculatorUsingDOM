@@ -6,3 +6,74 @@ console.log(add(1, 2));
 console.log(subtract(1, 2));
 console.log(multiply(1, 2));
 console.log(divide(1, 2));
+
+const operate = (num1, operand, num2) => {
+  if (operand == "+") return add(num1, num2);
+  else if (operand == "-") return subtract(num1, num2);
+  else if (operand == "*") return multiply(num1 * num2);
+  else if (operand == "/") return divide(num1, num2);
+  else return "....";
+};
+
+console.log(operate(1, "*", 2));
+
+// create a calculator
+
+function randomColors() {
+  let colorVal = Math.round(Math.random() * 255);
+  let colorValTwo = Math.round(Math.random() * 255);
+  let colorValThree = Math.round(Math.random() * 255);
+  const rgbValue = `rgb(${colorVal}, ${colorValTwo}, ${colorValThree})`; //255,255,255
+  return rgbValue;
+}
+
+const returnDiv = () => {
+  let divElement = document.createElement("div");
+  return divElement;
+};
+
+let divElement;
+const createElementDiv = () => {
+  divElement = returnDiv();
+  const container = document.querySelector(".container");
+  container.classList.add("display-flex");
+  container.appendChild(divElement);
+  divElement.classList.add("element");
+  divElement.style.backgroundColor = randomColors();
+};
+console.log(returnDiv());
+
+createElementDiv();
+
+const createNumberBlock = () => {
+  for (let i = 0; i < 14; i++) {
+    createElementDiv();
+    if (i <= 9) divElement.textContent = i;
+    if (i == 10) divElement.textContent = "+";
+    if (i == 11) divElement.textContent = "-";
+    if (i == 12) divElement.textContent = "*";
+    if (i == 13) divElement.textContent = "/";
+  }
+};
+
+createNumberBlock();
+const container = document.querySelectorAll(".container");
+
+const clickDiv = () => {
+  container.forEach((element) => {
+    element.addEventListener("click", function (e) {
+      let numberClicked = Number(e.target.textContent);
+      if (e.target.textContent == "+") {
+        console.log(add(1, 2));
+      } else if (e.target.textContent == "-") {
+        console.log(subtract(1, 2));
+      } else if (e.target.textContent == "*") {
+        console.log(multiply(1, 2));
+      } else if (e.target.textContent == "/") {
+        console.log(divide(1, 2));
+      }
+    });
+  });
+};
+
+clickDiv();

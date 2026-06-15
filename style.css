@@ -1,0 +1,16 @@
+.element {
+  border: 1px solid red;
+  height: 100px;
+  width: 100px;
+}
+
+.display-flex {
+  margin: 0 auto;
+  border: 1px solid red;
+  max-width: 600px;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
