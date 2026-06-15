@@ -2,10 +2,6 @@ const add = (num1, num2) => num1 + num2;
 const subtract = (num1, num2) => num1 - num2;
 const multiply = (num1, num2) => num1 * num2;
 const divide = (num1, num2) => num1 / num2;
-console.log(add(1, 2));
-console.log(subtract(1, 2));
-console.log(multiply(1, 2));
-console.log(divide(1, 2));
 
 const operate = (num1, operand, num2) => {
   if (operand == "+") return add(num1, num2);
@@ -14,8 +10,6 @@ const operate = (num1, operand, num2) => {
   else if (operand == "/") return divide(num1, num2);
   else return "....";
 };
-
-console.log(operate(1, "*", 2));
 
 // create a calculator
 
@@ -41,7 +35,6 @@ const createElementDiv = () => {
   divElement.classList.add("element");
   divElement.style.backgroundColor = randomColors();
 };
-console.log(returnDiv());
 
 createElementDiv();
 
@@ -59,18 +52,26 @@ const createNumberBlock = () => {
 createNumberBlock();
 const container = document.querySelectorAll(".container");
 
+let arrayOfNumbers = [];
+let result = 0;
 const clickDiv = () => {
   container.forEach((element) => {
     element.addEventListener("click", function (e) {
       let numberClicked = Number(e.target.textContent);
+      arrayOfNumbers.push(numberClicked);
+
       if (e.target.textContent == "+") {
-        console.log(add(1, 2));
+        result = Number(arrayOfNumbers[0]) + Number(arrayOfNumbers[1]);
+        console.log(result);
       } else if (e.target.textContent == "-") {
-        console.log(subtract(1, 2));
+        result = Number(arrayOfNumbers[0]) - Number(arrayOfNumbers[1]);
+        console.log(result);
       } else if (e.target.textContent == "*") {
-        console.log(multiply(1, 2));
+        result = Number(arrayOfNumbers[0]) * Number(arrayOfNumbers[1]);
+        console.log(result);
       } else if (e.target.textContent == "/") {
-        console.log(divide(1, 2));
+        result = Number(arrayOfNumbers[0]) / Number(arrayOfNumbers[1]);
+        console.log(result);
       }
     });
   });
