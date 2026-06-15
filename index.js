@@ -13,6 +13,8 @@ const operate = (num1, operand, num2) => {
 
 // create a calculator
 const container = document.querySelectorAll(".container");
+const title = document.querySelector(".title");
+title.style.color = randomColors();
 
 function randomColors() {
   let colorVal = Math.round(Math.random() * 255);
@@ -77,16 +79,16 @@ const clickDiv = () => {
       arrayOfNumbers.push(numberClicked);
 
       if (e.target.textContent == "+") {
-        result = Number(arrayOfNumbers[0]) + Number(arrayOfNumbers[1]);
+        result = add(Number(arrayOfNumbers[0]), Number(arrayOfNumbers[1]));
         containerDivs[14].textContent = result;
       } else if (e.target.textContent == "-") {
-        result = Number(arrayOfNumbers[0]) - Number(arrayOfNumbers[1]);
+        result = subtract(Number(arrayOfNumbers[0]), Number(arrayOfNumbers[1]));
         containerDivs[14].textContent = result;
       } else if (e.target.textContent == "*") {
-        result = Number(arrayOfNumbers[0]) * Number(arrayOfNumbers[1]);
+        result = multiply(Number(arrayOfNumbers[0]), Number(arrayOfNumbers[1]));
         containerDivs[14].textContent = result;
       } else if (e.target.textContent == "/") {
-        result = Number(arrayOfNumbers[0]) / Number(arrayOfNumbers[1]);
+        result = divide(Number(arrayOfNumbers[0]), Number(arrayOfNumbers[1]));
         containerDivs[14].textContent = result;
       }
     });
